@@ -34,6 +34,8 @@
       container: 'map',
       /*
       Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+      
+      img { width: 200px;}
       Mapbox Outdoors: mapbox://styles/mapbox/outdoors-v12
       Mapbox Light: mapbox://styles/mapbox/light-v11
       Mapbox Dark: mapbox://styles/mapbox/dark-v11
@@ -41,9 +43,12 @@
       Mapbox Satellite Streets: mapbox://styles/mapbox/satellite-streets-v12
       Mapbox Streets: mapbox://styles/mapbox/streets-v12
       */
-      style: 'mapbox://styles/mapbox/outdoors-v12',
+      style: 'mapbox://styles/kevinsmapbox/cmgk2zajw00fw01ri4vty5bq2',
       center: [-121.403732, 40.492392],
       zoom: 10
+   
+    
+   
     });
 
     map.on('load', () => {
@@ -59,30 +64,33 @@
                 'coordinates': [ -119.53438038330005, 37.869499059093165]
               },
               "properties": {
-                'name': "my first popup",
+                'name': "Travel!",
                 'description': "My first time in Yosemite!",
+              'image': " https://www.nps.gov/common/uploads/grid_builder/yose/crop1_1/D532110B-A10A-0A77-67813FAF13F0D279.jpg?width=640&quality=90&mode=crop",
               }
             },
             {
               'type': 'Feature',
               'geometry': {
                 'type': 'Point',
-                'coordinates': [-122.14778771898588,37.75084528548452]
+                'coordinates': [-122.23556374156004, 37.8206976529993]
               },
               "properties": {
-                'name': "my 2nd popup",
-                'description': "I volunteered at the Zoo!",
+                'name': "Sports!",
+                'description': "I train track and field here!",
+                 'image': " https://images.squarespace-cdn.com/content/v1/5c8c140be5f7d12e21c51e0e/5144f2f2-4491-4931-8721-b387a0cbdd56/Witter_Drone.JPG ",
               }
             },
             {
               'type': 'Feature',
               'geometry': {
                 'type': 'Point',
-                'coordinates': [-122.23563044251108, 37.82071463714641]
+                'coordinates': [-122.14661823381306, 37.74913005378037]
               },
               "properties": {
-                'name': "my 3rd popup",
-                'description': "I train for track and field here!",
+                'name': "Volunteer Work!",
+                'description': "I volunteered at the Oakland Zoo!",
+                 'image': " https://upload.wikimedia.org/wikipedia/commons/e/e6/Oakland_Zoo_entrance.jpg",
               }
             }
           ]
@@ -107,12 +115,12 @@
           const coordinates = e.feature.geometry.coordinates.slice();
           const name = e.feature.properties.name;
           const description = e.feature.properties.description;
-          // const image = e.feature.properties.image;
+          const image = e.feature.properties.image;
 
           new mapboxgl.Popup()
             .setLngLat(coordinates)
             .setHTML("<strong>" + name + "</strong><br/>" + description)
-            // .setHTML("<img src='" + image + "'><br><strong>" + name + "</strong><br/>" + description)
+            .setHTML("<img src='" + image + "'><br><strong>" + name + "</strong><br/>" + description)
             .addTo(map);
         }
       });
